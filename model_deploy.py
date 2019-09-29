@@ -18,7 +18,7 @@ def setup_model_with_weights():
   model.add(Dropout(0.5))
   model.add(Dense(14, activation='sigmoid'))
 
-  model.load_weights('/Users/Florian/Desktop/lungcure/model_results/multi_disease_model_weight.h5')
+  model.load_weights('model_results/multi_disease_model_weight.h5')
 
   model.compile(
       optimizer='adam',
@@ -42,11 +42,9 @@ def predict_image(model, img_path, biggest_result=False):
   return (np.argmax(pred), np.max(pred)) if biggest_result else pred
 
 
-"""
 labels = ['Atelectasis', 'Cardiomegaly', 'Consolidation', 'Edema', 'Effusion',
           'Emphysema', 'Fibrosis', 'Hernia', 'Infiltration', 'Mass', 'Nodule',
           'Pleural_Thickening', 'Pneumonia', 'Pneumothorax']
 model = setup_model_with_weights()
-(index, value) = predict_image(model, '/Users/Florian/Desktop/lungcure/model_results/__results___files/__results___10_0.png', biggest_result=True)
+(index, value) = predict_image(model, 'model_results/__results___files/__results___10_0.png', biggest_result=True)
 print(labels[index], value)
-"""
