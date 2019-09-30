@@ -50,10 +50,12 @@ def predict_image(model, img_path, biggest_result=False):
   return (np.argmax(pred), np.max(pred)) if biggest_result else pred
 
 
-labels = ['Atelectasis', 'Cardiomegaly', 'Consolidation', 'Edema', 'Effusion',
-          'Emphysema', 'Fibrosis', 'Hernia', 'Infiltration', 'Mass', 'Nodule',
-          'Pleural_Thickening', 'Pneumonia', 'Pneumothorax']
-model = build_model()
+if __name__ == '__main__':
+  labels = ['Atelectasis', 'Cardiomegaly', 'Consolidation', 'Edema', 'Effusion',
+            'Emphysema', 'Fibrosis', 'Hernia', 'Infiltration', 'Mass', 'Nodule',
+            'Pleural_Thickening', 'Pneumonia', 'Pneumothorax']
+  model = build_model()
 
-preds = predict_image(model, 'model_results/test_images/Atelectasis.png')
-print(preds)
+  preds = predict_image(model, 'model_results/test_images/Atelectasis.png')
+  print(preds)
+
