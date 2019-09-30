@@ -4,6 +4,8 @@ from keras.preprocessing import image
 from keras.models import Sequential, model_from_json
 from keras.applications.mobilenet import preprocess_input
 import numpy as np
+import matplotlib.image as mpimg
+import matplotlib.pyplot as plt
 import json
 
 
@@ -44,9 +46,16 @@ def load_image(img_path):
   return img
 
 
-def predict_image(model, img_path, biggest_result=False):
+def predict_image(model, img_path, biggest_result=False, show_result=False):
   new_image = load_image(img_path)
   pred = model.predict(new_image)
+
+  if show_result:
+    img = mpimg.imread(img_path)
+    imgplot = plt.imshow(img, cmap='bone')
+    plt.title(pred)
+    plt.show()
+
   return (np.argmax(pred), np.max(pred)) if biggest_result else pred
 
 
@@ -56,6 +65,6 @@ if __name__ == '__main__':
             'Pleural_Thickening', 'Pneumonia', 'Pneumothorax']
   model = build_model()
 
-  preds = predict_image(model, 'model_results/test_images/Atelectasis.png')
+  preds = predict_image(model, 'model_results/test_images/Atelectasis.png', show_result=True)
   print(preds)
 
