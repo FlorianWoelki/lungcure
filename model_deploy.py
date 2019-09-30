@@ -38,11 +38,10 @@ def build_model():
 
 
 def load_image(img_path):
-  img = image.load_img(img_path, target_size=(128, 128))
+  img = image.load_img(img_path, target_size=(128, 128, 3))
   img = image.img_to_array(img)
   img = np.expand_dims(img, axis=0)
   img /= 255.
-  img = preprocess_input(img)
   return img
 
 
@@ -65,6 +64,15 @@ if __name__ == '__main__':
             'Pleural_Thickening', 'Pneumonia', 'Pneumothorax']
   model = build_model()
 
-  preds = predict_image(model, 'model_results/test_images/Atelectasis.png', show_result=True)
+  preds = predict_image(model, 'model_results/test_images/00024720_000.png')
+  print(preds)
+
+  preds = predict_image(model, 'model_results/test_images/00028173_010.png')
+  print(preds)
+
+  preds = predict_image(model, 'model_results/test_images/00028173_012.png')
+  print(preds)
+
+  preds = predict_image(model, 'model_results/test_images/Cardiomegaly.jpeg')
   print(preds)
 
