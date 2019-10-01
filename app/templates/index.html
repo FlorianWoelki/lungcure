@@ -18,8 +18,6 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='fonts/flaticon/font/flaticon.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/aos.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-
-
     <style>
         .slide-1 {
             background-image: url({{ url_for('static', filename='images/dna.gif') }});
@@ -203,23 +201,17 @@
                             <ul class="site-menu main-menu js-clone-nav mx-auto d-none d-lg-block  m-0 p-0">
                                 <li><a href="#home-section" class="nav-link">Home</a></li>
                                 <li><a href="#payment-section" class="nav-link">Payment</a></li>
-
                             </ul>
-
-
                         </nav>
                     </div>
                     <div class="ml-auto w-25">
                         <nav class="site-navigation position-relative text-right" role="navigation">
-                            <ul
-                                class="site-menu main-menu site-menu-dark js-clone-nav mr-auto d-none d-lg-block m-0 p-0">
+                            <ul class="site-menu main-menu site-menu-dark js-clone-nav mr-auto d-none d-lg-block m-0 p-0">
                                 <li class="cta"><a href="#contact-section" class="nav-link"><span>Contact Us</span></a>
                                 </li>
                             </ul>
                         </nav>
-                        <a href="#"
-                            class="d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black float-right"><span
-                                class="icon-menu h3"></span></a>
+                        <a href="#" class="d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black float-right"><span class="icon-menu h3"></span></a>
                     </div>
                 </div>
             </div>
@@ -255,49 +247,32 @@
                                             <input type="submit" class="btn btn-primary btn-pill" value="Sign up">
                                             <!-- operation on form -->
                                         </div>
-
-
                                     </form>
                                     <div>
-                                        <button onclick="document.getElementById('id01').style.display='block'"
-                                            style="width:auto;">Login</button>
-
+                                        <button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Login</button>
                                         <div id="id01" class="modal">
-
                                             <form class="modal-content animate" action="/action_page.php" method="post">
                                                 <div class="imgcontainer">
-                                                    <span onclick="document.getElementById('id01').style.display='none'"
-                                                        class="close" title="Close Modal">&times;</span>
-                                                    
+                                                    <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
                                                 </div>
-
                                                 <div class="container">
                                                     <label for="uname"><b>Username</b></label>
-                                                    <input type="text" placeholder="Enter Username" name="uname"
-                                                        required>
-
+                                                    <input type="text" placeholder="Enter Username" name="uname" required>
                                                     <label for="psw"><b>Password</b></label>
-                                                    <input type="password" placeholder="Enter Password" name="psw"
-                                                        required>
-
+                                                    <input type="password" placeholder="Enter Password" name="psw" required>
                                                     <button type="submit">Login</button>
                                                     <label>
                                                         <input type="checkbox" checked="checked" name="remember">
                                                         Remember me
                                                     </label>
                                                 </div>
-
                                                 <div class="container" style="background-color:#f1f1f1">
-                                                    <button type="button"
-                                                        onclick="document.getElementById('id01').style.display='none'"
-                                                        class="cancelbtn">Cancel</button>
+                                                    <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
                                                     <span class="psw">Forgot <a href="#">password?</a></span>
                                                 </div>
                                             </form>
                                         </div>
-
                                         <script>
-
                                             var modal = document.getElementById('id01');
 
 
@@ -307,10 +282,8 @@
                                                 }
                                             }
                                         </script>
-
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                     </div>
@@ -355,7 +328,11 @@
                                 <li>Email support</li>
                                 <li>Help center access</li>
                             </ul>
-                            <button type="button" class="btn btn-lg btn-block btn-primary">Sign Up</button>
+                            <!-- <button type="button" class="btn btn-lg btn-block btn-primary">Sign Up</button>-->
+                            <form action="{{ url_for('pay') }}" method="POST">
+                                <script src="https://checkout.stripe.com/checkout.js" class="stripe-button" data-key="{{ pub_key }}" data-amount="1500" data-name="Demo Site" data-description="Widget" data-image="https://stripe.com/img/documentation/checkout/marketplace.png" data-locale="auto">
+                                </script>
+                            </form>
                         </div>
                     </div>
                     <div class="card mb-4 box-shadow" data-aos="fade-left" data-aos-delay="500">
@@ -406,14 +383,12 @@
                             </div>
                             <div class="form-group row">
                                 <div class="col-md-12">
-                                    <textarea class="form-control" id="" cols="30" rows="10"
-                                        placeholder="Write your message here."></textarea>
+                                    <textarea class="form-control" id="" cols="30" rows="10" placeholder="Write your message here."></textarea>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <div class="col-md-6">
-                                    <input type="submit" class="btn btn-primary py-3 px-5 btn-block btn-pill"
-                                        value="Send Message">
+                                    <input type="submit" class="btn btn-primary py-3 px-5 btn-block btn-pill" value="Send Message">
                                 </div>
                             </div>
                         </form>
