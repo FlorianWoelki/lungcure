@@ -19,13 +19,167 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/aos.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 
+
     <style>
         .slide-1 {
             background-image: url({{ url_for('static', filename='images/dna.gif') }});
         }
+        
+        
+        
+        
 
         .footer-subscribe .btn {
             height: 48px;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        input[type=text],
+        input[type=password] {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+
+
+
+            border-radius: 4px;
+            font-size: 16px;
+            background-color: white;
+
+            background-position: 10px 10px;
+            background-repeat: no-repeat;
+            padding: 12px 20px 12px 40px;
+        }
+
+        /* Set a style for all buttons */
+        button {
+            background-color: #ddd;
+            border: none;
+            color: purple;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 16px;
+
+        }
+
+        button:hover {
+            opacity: 0.8;
+        }
+
+        /* Extra styles for the cancel button */
+        .cancelbtn {
+            width: auto;
+            padding: 10px 18px;
+            background-color: #f44336;
+        }
+
+        /* Center the image and position the close button */
+        .imgcontainer {
+            text-align: center;
+            margin: 24px 0 12px 0;
+            position: relative;
+        }
+
+        img.avatar {
+            width: 40%;
+            border-radius: 50%;
+        }
+
+        .container {
+            padding: 16px;
+        }
+
+        span.psw {
+            float: right;
+            padding-top: 16px;
+        }
+
+        /* The Modal (background) */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.4);
+            padding-top: 60px;
+        }
+
+        /* Modal Content/Box */
+        .modal-content {
+            background-color: #fefefe;
+
+            margin: 5% auto 15% auto;
+            border: 1px solid #888;
+            width: 80%;
+        }
+
+        /* The Close Button (x) */
+        .close {
+            position: absolute;
+            right: 25px;
+            top: 0;
+            color: #000;
+            font-size: 35px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: red;
+            cursor: pointer;
+        }
+
+        /* Add Zoom Animation */
+        .animate {
+            -webkit-animation: animatezoom 0.6s;
+            animation: animatezoom 0.6s
+        }
+
+        @-webkit-keyframes animatezoom {
+            from {
+                -webkit-transform: scale(0)
+            }
+
+            to {
+                -webkit-transform: scale(1)
+            }
+        }
+
+        @keyframes animatezoom {
+            from {
+                transform: scale(0)
+            }
+
+            to {
+                transform: scale(1)
+            }
+        }
+
+        /* Change styles for span and cancel button on extra small screens */
+        @media screen and (max-width: 300px) {
+            span.psw {
+                display: block;
+                float: none;
+            }
+
+            .cancelbtn {
+                width: 100%;
+            }
         }
     </style>
 </head>
@@ -48,17 +202,24 @@
                         <nav class="site-navigation position-relative text-right" role="navigation">
                             <ul class="site-menu main-menu js-clone-nav mx-auto d-none d-lg-block  m-0 p-0">
                                 <li><a href="#home-section" class="nav-link">Home</a></li>
+                                <li><a href="#payment-section" class="nav-link">Payment</a></li>
+
                             </ul>
+
+
                         </nav>
                     </div>
                     <div class="ml-auto w-25">
                         <nav class="site-navigation position-relative text-right" role="navigation">
-                            <ul class="site-menu main-menu site-menu-dark js-clone-nav mr-auto d-none d-lg-block m-0 p-0">
+                            <ul
+                                class="site-menu main-menu site-menu-dark js-clone-nav mr-auto d-none d-lg-block m-0 p-0">
                                 <li class="cta"><a href="#contact-section" class="nav-link"><span>Contact Us</span></a>
                                 </li>
                             </ul>
                         </nav>
-                        <a href="#" class="d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black float-right"><span class="icon-menu h3"></span></a>
+                        <a href="#"
+                            class="d-inline-block d-lg-none site-menu-toggle js-menu-toggle text-black float-right"><span
+                                class="icon-menu h3"></span></a>
                     </div>
                 </div>
             </div>
@@ -71,12 +232,16 @@
                             <div class="row align-items-center">
                                 <div class="col-lg-6 mb-4">
                                     <h1 data-aos="fade-up" data-aos-delay="100">we care about your health</h1>
-                                    <p data-aos="fade-up" data-aos-delay="100">a artificial intelligence classification for lung diseases.</p>
+                                    <p data-aos="fade-up" data-aos-delay="100">a artificial intelligence classification
+                                        for lung diseases.</p>
                                 </div>
                                 <div class="col-lg-5 ml-auto" data-aos="fade-up" data-aos-delay="500">
                                     <!-- sign up form -->
                                     <form action="" method="post" class="form-box">
                                         <h3 class="h4 text-black mb-4">Sign Up</h3>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="Name">
+                                        </div>
                                         <div class="form-group">
                                             <input type="text" class="form-control" placeholder="Email Addresss">
                                         </div>
@@ -90,15 +255,69 @@
                                             <input type="submit" class="btn btn-primary btn-pill" value="Sign up">
                                             <!-- operation on form -->
                                         </div>
+
+
                                     </form>
+                                    <div>
+                                        <button onclick="document.getElementById('id01').style.display='block'"
+                                            style="width:auto;">Login</button>
+
+                                        <div id="id01" class="modal">
+
+                                            <form class="modal-content animate" action="/action_page.php" method="post">
+                                                <div class="imgcontainer">
+                                                    <span onclick="document.getElementById('id01').style.display='none'"
+                                                        class="close" title="Close Modal">&times;</span>
+                                                    
+                                                </div>
+
+                                                <div class="container">
+                                                    <label for="uname"><b>Username</b></label>
+                                                    <input type="text" placeholder="Enter Username" name="uname"
+                                                        required>
+
+                                                    <label for="psw"><b>Password</b></label>
+                                                    <input type="password" placeholder="Enter Password" name="psw"
+                                                        required>
+
+                                                    <button type="submit">Login</button>
+                                                    <label>
+                                                        <input type="checkbox" checked="checked" name="remember">
+                                                        Remember me
+                                                    </label>
+                                                </div>
+
+                                                <div class="container" style="background-color:#f1f1f1">
+                                                    <button type="button"
+                                                        onclick="document.getElementById('id01').style.display='none'"
+                                                        class="cancelbtn">Cancel</button>
+                                                    <span class="psw">Forgot <a href="#">password?</a></span>
+                                                </div>
+                                            </form>
+                                        </div>
+
+                                        <script>
+
+                                            var modal = document.getElementById('id01');
+
+
+                                            window.onclick = function (event) {
+                                                if (event.target == modal) {
+                                                    modal.style.display = "none";
+                                                }
+                                            }
+                                        </script>
+
+                                    </div>
                                 </div>
+
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="site-section" id="pricing-section">
+        <div class="site-section" id="payment-section">
             <div class="container">
                 <h2 class="section-title mb-3 text-center" data-aos="fade-down" data-aos-delay="500">Pricing</h2>
                 <div class="card-deck mb-3 text-center" style="margin-top: 60px;">
@@ -117,7 +336,8 @@
                                 <li>No Email support</li>
                                 <li>Help center access</li>
                             </ul>
-                            <button type="button" class="btn btn-lg btn-block btn-outline-primary">Sign up for free</button>
+                            <button type="button" class="btn btn-lg btn-block btn-outline-primary">Sign up for
+                                free</button>
                         </div>
                     </div>
                     <div class="card mb-4 box-shadow" data-aos="fade-up" data-aos-delay="500">
@@ -186,12 +406,14 @@
                             </div>
                             <div class="form-group row">
                                 <div class="col-md-12">
-                                    <textarea class="form-control" id="" cols="30" rows="10" placeholder="Write your message here."></textarea>
+                                    <textarea class="form-control" id="" cols="30" rows="10"
+                                        placeholder="Write your message here."></textarea>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <div class="col-md-6">
-                                    <input type="submit" class="btn btn-primary py-3 px-5 btn-block btn-pill" value="Send Message">
+                                    <input type="submit" class="btn btn-primary py-3 px-5 btn-block btn-pill"
+                                        value="Send Message">
                                 </div>
                             </div>
                         </form>
