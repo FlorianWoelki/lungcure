@@ -27,6 +27,7 @@
         
         .footer-subscribe .btn {
             height: 48px;
+            margin-top: 8px;
         }
 
         body {
@@ -66,10 +67,6 @@
             cursor: pointer;
             border-radius: 16px;
 
-        }
-
-        button:hover {
-            opacity: 0.8;
         }
 
         /* Extra styles for the cancel button */
@@ -228,7 +225,7 @@
                                     <p data-aos="fade-up" data-aos-delay="100">a artificial intelligence classification
                                         for lung diseases.</p>
                                 </div>
-                                <div class="col-lg-5 ml-auto" data-aos="fade-up" data-aos-delay="500">
+                                <div class="col-lg-5 ml-auto" data-aos="fade-up" data-aos-delay="500" style="padding-left:0;padding-right:0;">
                                     <!-- sign up form -->
                                     <form action="" method="post" class="form-box">
                                         <h3 class="h4 text-black mb-4">Sign Up</h3>
@@ -247,16 +244,11 @@
                                         <div class="form-group">
                                             <input type="submit" class="btn btn-primary btn-pill" value="Sign up">
                                             <!-- operation on form -->
+                                            <a href="#" onclick="document.getElementById('id01').style.display='block'">Click to login</a>                                            
                                         </div>
-
-
                                     </form>
                                     <div>
-                                        <button onclick="document.getElementById('id01').style.display='block'"
-                                            style="width:auto;">Login</button>
-
                                         <div id="id01" class="modal">
-
                                             <form class="modal-content animate" action="/action_page.php" method="post">
                                                 <div class="imgcontainer">
                                                     <span onclick="document.getElementById('id01').style.display='none'"
@@ -265,27 +257,26 @@
                                                 </div>
 
                                                 <div class="container">
-                                                    <label for="uname"><b>Username</b></label>
-                                                    <input type="text" placeholder="Enter Username" name="uname"
+                                                    <input type="text" placeholder="Email" name="uname"
                                                         required>
 
-                                                    <label for="psw"><b>Password</b></label>
-                                                    <input type="password" placeholder="Enter Password" name="psw"
+                                                    <input type="password" placeholder="Password" name="psw"
                                                         required>
 
-                                                    <button type="submit">Login</button>
-                                                    <label>
+                                                    <button type="submit" class="btn btn-primary btn-pill">Login</button>
+                                                    <!--<label>
                                                         <input type="checkbox" checked="checked" name="remember">
                                                         Remember me
-                                                    </label>
+                                                    </label>-->
                                                 </div>
-
+                                                <!--
                                                 <div class="container" style="background-color:#f1f1f1">
                                                     <button type="button"
                                                         onclick="document.getElementById('id01').style.display='none'"
                                                         class="cancelbtn">Cancel</button>
                                                     <span class="psw">Forgot <a href="#">password?</a></span>
                                                 </div>
+                                                -->
                                             </form>
                                         </div>
 
