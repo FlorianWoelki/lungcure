@@ -25,36 +25,12 @@
             background-image: url({{ url_for('static', filename='images/dna.gif') }});
         }
         
-        
-        
-        
-
         .footer-subscribe .btn {
             height: 48px;
         }
 
         body {
             font-family: Arial, Helvetica, sans-serif;
-        }
-
-        input[type=text],
-        input[type=password] {
-            width: 100%;
-            padding: 12px 20px;
-            margin: 8px 0;
-            display: inline-block;
-            border: 1px solid #ccc;
-            box-sizing: border-box;
-
-
-
-            border-radius: 4px;
-            font-size: 16px;
-            background-color: white;
-
-            background-position: 10px 10px;
-            background-repeat: no-repeat;
-            padding: 12px 20px 12px 40px;
         }
 
         /* Set a style for all buttons */
@@ -70,10 +46,6 @@
             cursor: pointer;
             border-radius: 16px;
 
-        }
-
-        button:hover {
-            opacity: 0.8;
         }
 
         /* Extra styles for the cancel button */
@@ -181,21 +153,6 @@
                 width: 100%;
             }
         }
-        .box__dragndrop,
-.box__uploading,
-.box__success,
-.box__error {
-  display: none;
-}
-img{
-  max-width:180px;
-}
-input[type=file]{
-padding:10px;
-background:#2d2d2d;}
-img.rounded-corner{
-    border-image: 30px;
-}
     </style>
 
 </head>
@@ -219,10 +176,7 @@ img.rounded-corner{
                             <ul class="site-menu main-menu js-clone-nav mx-auto d-none d-lg-block  m-0 p-0">
                                 <li><a href="#home-section" class="nav-link">Home</a></li>
                                 <li><a href="#payment-section" class="nav-link">Payment</a></li>
-
                             </ul>
-
-
                         </nav>
                     </div>
                     <div class="ml-auto w-25">
@@ -251,118 +205,39 @@ img.rounded-corner{
                                     <p data-aos="fade-up" data-aos-delay="100">a artificial intelligence classification
                                         for lung diseases.</p>
                                 </div>
-                                <div class="col-lg-5 ml-auto" data-aos="fade-up" data-aos-delay="500">
-                                    <!-- sign up form -->
-                                    <form action="" method="post" class="form-box">
-                                        <h3 class="h4 text-black mb-4">Sign Up</h3>
+                                <div class="col-lg-5 ml-auto" data-aos="fade-up" data-aos-delay="500" style="padding-left:0;padding-right:0;">
+                                    <!-- login form -->
+                                    <form action="" method="POST" class="form-box" id="sign-up-form">
+                                        <h3 class="h4 text-black mb-4">Login</h3>
                                         <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="Name">
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="Email Addresss">
+                                            <input type="email" class="form-control" id="login_email" placeholder="Email Addresss">
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" class="form-control" placeholder="Password">
-                                        </div>
-                                        <div class="form-group mb-4">
-                                            <input type="password" class="form-control" placeholder="Re-type Password">
+                                            <input type="password" class="form-control" id="login_pswd" placeholder="Password">
                                         </div>
                                         <div class="form-group">
-                                            <input type="submit" class="btn btn-primary btn-pill" value="Sign up">
-                                            <!-- operation on form -->
+                                            <button type="button" class="btn btn-primary btn-pill" onclick="checkLoginData()">Login</button>
                                         </div>
-
-
                                     </form>
-                                    <div>
-                                        <button onclick="document.getElementById('id01').style.display='block'"
-                                            style="width:auto;">Login</button>
 
-                                        <div id="id01" class="modal">
-
-                                            <form class="modal-content animate" action="/action_page.php" method="post">
-                                                <div class="imgcontainer">
-                                                    <span onclick="document.getElementById('id01').style.display='none'"
-                                                        class="close" title="Close Modal">&times;</span>
-                                                    
-                                                </div>
-
-                                                <div class="container">
-                                                    <label for="uname"><b>Username</b></label>
-                                                    <input type="text" placeholder="Enter Username" name="uname"
-                                                        required>
-
-                                                    <label for="psw"><b>Password</b></label>
-                                                    <input type="password" placeholder="Enter Password" name="psw"
-                                                        required>
-
-                                                    <button type="submit">Login</button>
-                                                    <label>
-                                                        <input type="checkbox" checked="checked" name="remember">
-                                                        Remember me
-                                                    </label>
-                                                </div>
-
-                                                <div class="container" style="background-color:#f1f1f1">
-                                                    <button type="button"
-                                                        onclick="document.getElementById('id01').style.display='none'"
-                                                        class="cancelbtn">Cancel</button>
-                                                    <span class="psw">Forgot <a href="#">password?</a></span>
-                                                </div>
-                                            </form>
-                                        </div>
-
-                                        <script>
-
-                                            var modal = document.getElementById('id01');
-
-
-                                            window.onclick = function (event) {
-                                                if (event.target == modal) {
-                                                    modal.style.display = "none";
-                                                }
-                                            }
-                                        </script>
-
-                                    </div>
+                                    <form action="/pay" method="POST" id="payment-form" style="display: none; text-align: center;">
+                                        <h3 class="h4 text-white mb-4">You need to pay for this service!</h3>
+                                        <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                                        data-key="{{ pub_key }}"
+                                        data-amount="2099"
+                                        data-name="lungcure"
+                                        data-description="Payment"
+                                        data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+                                        data-locale="auto"></script>
+                                    </form>
                                 </div>
-
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <br>
-        <br>
-        <div>
-            <form class="box" method="post" action="" enctype="multipart/form-data">
-  <div class="box__input">
-    <!-- <input class="box__file" type="file" name="files[]" id="file" data-multiple-caption="{count} files selected" multiple /> -->
-   <!-- <label for="file"><strong>Choose a file</strong><span class="box__dragndrop"> or drag it here</span>.</label> -->
-   <h1>Upload image and test your result</h1>
-   <center><input type='file' onchange="readURL(this);" /></center><br>
-<div ><center><img id="blah" src="http://giphygifs.s3.amazonaws.com/media/G5ZzaFMyDNoPu/giphy.gif" alt="your image" height="200px" width="200px"  /></center></div>
-<script >
-         function readURL(input) {
-            if (input.files && input.files[0]) {
-                var reader = new FileReader();
-
-                reader.onload = function (e) {
-                    $('#blah')
-                        .attr('src', e.target.result);
-                };
-
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
-</script>
-   <div><center><button>Predict</button></center></div>
-    <!-- <button class="box__button" type="submit">Upload</button> -->
-  </div>
-  
-</form>
-        </div>
+        
         <div class="site-section" id="payment-section">
             <div class="container">
                 <h2 class="section-title mb-3 text-center" data-aos="fade-down" data-aos-delay="500">Pricing</h2>
@@ -496,7 +371,7 @@ img.rounded-corner{
                 </div>
             </div>
         </footer>
-    </div> <!-- .site-wrap -->
+    </div>
     <script src="{{ url_for('static', filename='js/jquery-3.3.1.min.js') }}"></script>
     <script src="{{ url_for('static', filename='js/jquery-migrate-3.0.1.min.js') }}"></script>
     <script src="{{ url_for('static', filename='js/jquery-ui.js') }}"></script>
@@ -511,6 +386,33 @@ img.rounded-corner{
     <script src="{{ url_for('static', filename='js/jquery.fancybox.min.js') }}"></script>
     <script src="{{ url_for('static', filename='js/jquery.sticky.js') }}"></script>
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script src="https://js.stripe.com/v3"></script>
+    <script>
+        var modal = document.getElementById('id01');
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        if (document.cookie === 'logged_in=1') {
+            const signupForm = document.getElementById('sign-up-form');
+            signupForm.style.display = 'none';
+            const paymentForm = document.getElementById('payment-form');
+            paymentForm.style.display = 'block';
+        }
+
+        function checkLoginData() {
+            const email = $('#login_email').val();
+            const password = $('#login_pswd').val();
+
+            // Really dump mockup data checking
+            if (email === 'admin@admin.com' && password === 'admin') {
+                document.cookie = 'logged_in=1';
+                location.reload();
+            }
+        }
+    </script>
 </body>
 
 </html>
