@@ -2,4 +2,4 @@
 
 git pull &&
 
-pip3 install matplotlib, keras, flask, stripe
+pip3 install matplotlib, keras, flask, stripe, python-dotenv

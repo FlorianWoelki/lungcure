@@ -1,9 +1,14 @@
 from flask import request, render_template, redirect, url_for
 from app import app
 import stripe
+from dotenv import load_dotenv  # Import to load production.env file
+from os import getenv  # Import os.getenv to retrieve environment variables
 
-pub_key = 'pk_test_QWt1IDL44XIi0iQDVGtzLXJ8'
-secret_key = 'sk_test_ViKCe4YERFqKhmiPEu0GToRW'
+# Load Environment Variables File
+load_dotenv("production.env")
+
+pub_key = getenv('pub_key')
+secret_key = getenv('secret_key')
 stripe.api_key = secret_key
 
 @app.route('/')
