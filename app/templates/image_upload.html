@@ -1,1 +1,83 @@
-<h1>UPLOADING</h1>
+<head>
+  <title>LungCure </title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="https://fonts.googleapis.com/css?family=Muli:300,400,700,900" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='fonts/icomoon/style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/jquery-ui.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/owl.carousel.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/owl.theme.default.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/jquery.fancybox.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap-datepicker.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/jquery.fancybox.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap-datepicker.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='fonts/flaticon/font/flaticon.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/aos.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+  <style>
+    .box__dragndrop,
+    .box__uploading,
+    .box__success,
+    .box__error {
+      display: none;
+    }
+    img{
+      max-width:180px;
+    }
+    input[type=file]{
+    padding:10px;
+    background:#2d2d2d;}
+    img.rounded-corner{
+        border-image: 30px;
+    }
+  </style>
+</head>
+
+<body>
+    <div>
+        <form class="box" method="post" action="" enctype="multipart/form-data">
+    <div class="box__input">
+    <!-- <input class="box__file" type="file" name="files[]" id="file" data-multiple-caption="{count} files selected" multiple /> -->
+    <!-- <label for="file"><strong>Choose a file</strong><span class="box__dragndrop"> or drag it here</span>.</label> -->
+    <h1>Upload image and test your result</h1>
+    <center><input type='file' onchange="readURL(this);" /></center><br>
+    <div ><center><img id="blah" src="http://giphygifs.s3.amazonaws.com/media/G5ZzaFMyDNoPu/giphy.gif" alt="your image" height="200px" width="200px"  /></center></div>
+    <script >
+     function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+    
+            reader.onload = function (e) {
+                $('#blah')
+                    .attr('src', e.target.result);
+            };
+    
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    </script>
+    <div><center><button>Predict</button></center></div>
+    <!-- <button class="box__button" type="submit">Upload</button> -->
+    </div>
+    
+    </form>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/jquery-3.3.1.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/jquery-migrate-3.0.1.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/jquery-ui.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/popper.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/owl.carousel.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/jquery.stellar.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/jquery.countdown.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap-datepicker.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/jquery.easing.1.3.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/aos.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/jquery.fancybox.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/jquery.sticky.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script src="https://js.stripe.com/v3"></script>
+</body>
