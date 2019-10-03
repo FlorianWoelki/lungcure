@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='fonts/flaticon/font/flaticon.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/aos.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.css">
 
   <style>
     .box__dragndrop,
@@ -111,7 +112,9 @@
             <center><input type="file" name="file" onchange="readURL(this);" /></center><br>
             <div><center><img id="blah" src="http://giphygifs.s3.amazonaws.com/media/G5ZzaFMyDNoPu/giphy.gif" alt="your image" height="200px" width="200px"  /></center></div>
             <div><center><button type="submit" class="button">Predict</button></center></div>
-            <p style="margin-top:25px;">{{ predictions }}</p>
+            {% if predictions.length != 0 %}
+              <canvas style="margin-top: 30px;" id="predictions-chart" width="400" height="250"></canvas>
+            {% endif %}
           </div>
         </form>
       </div>
@@ -134,7 +137,56 @@
     <script src="{{ url_for('static', filename='js/jquery.sticky.js') }}"></script>
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
     <script src="https://js.stripe.com/v3"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
     <script>
+      const ctx = document.getElementById('predictions-chart');
+      const labels = ['Atelectasis', 'Cardiomegaly', 'Consolidation', 'Edema', 'Effusion',
+                      'Emphysema', 'Fibrosis', 'Hernia', 'Infiltration', 'Mass', 'Nodule',
+                      'Pleural_Thickening', 'Pneumonia', 'Pneumothorax'];
+
+      if (ctx !== null) {
+          let predictions = {{ predictions }};
+          predictions = predictions.map((prediction) => prediction*100);
+          const myBarChart = new Chart(ctx, {
+              type: 'bar',
+              data: {
+                labels: labels,
+                datasets: [
+                  {
+                    label: 'Predictions',
+                    backgroundColor: 'rgba(220,220,220,1)', 
+                    data: predictions
+                  }
+                ]
+              },
+              options: {
+                responsive: true,
+                scales: {
+                  xAxes: [{
+                    display: true,
+                    gridLines: {
+                      display: true,
+                      color: '#555',
+                    },
+                    ticks: {
+                      fontColor: '#fff'
+                    }
+                  }],
+                  yAxes: [{
+                    display: true,
+                    gridLines: {
+                      display: true,
+                      color: '#555',
+                    },
+                    ticks: {
+                      fontColor: '#fff'
+                    }
+                  }]
+                }
+              }
+          });
+      }
+
       function readURL(input) {
          if (input.files && input.files[0]) {
              var reader = new FileReader();
