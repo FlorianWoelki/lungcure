@@ -392,8 +392,7 @@
             }
         }
 
-        console.log('Cookie', document.cookie);
-        if (document.cookie.contains("logged_in" === 1) {
+        if (document.cookie.split(';').filter((item) => item.trim().startsWith('logged_in=')).length) {
             const signupForm = document.getElementById('sign-up-form');
             signupForm.style.display = 'none';
             const paymentForm = document.getElementById('payment-form');
