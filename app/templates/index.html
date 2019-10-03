@@ -406,9 +406,7 @@
             // Really dump mockup data checking
             if (email === 'admin@admin.com' && password === 'admin') {
                 document.cookie = 'logged_in=1';
-                setTimeout(() => {
-                    location.reload();
-                }, 1000)
+                location.reload();
             }
         }
     </script>
