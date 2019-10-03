@@ -105,33 +105,16 @@
 <body >
     <div class="hero-image">
       <div class="hero-text">
-
-        <form class="box" method="post" action="" enctype="multipart/form-data">
-    <div class="box__input">
-    <!-- <input class="box__file" type="file" name="files[]" id="file" data-multiple-caption="{count} files selected" multiple /> -->
-    <!-- <label for="file"><strong>Choose a file</strong><span class="box__dragndrop"> or drag it here</span>.</label> -->
-    <h1>Upload image and test your result</h1>
-    <center><input type='file' onchange="readURL(this);" /></center><br>
-    <div ><center><img id="blah" src="http://giphygifs.s3.amazonaws.com/media/G5ZzaFMyDNoPu/giphy.gif" alt="your image" height="200px" width="200px"  /></center></div>
-    <script >
-     function readURL(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-    
-            reader.onload = function (e) {
-                $('#blah')
-                    .attr('src', e.target.result);
-            };
-    
-            reader.readAsDataURL(input.files[0]);
-        }
-    }
-    </script>
-    <div><center><button class="button">Predict</button></center></div>
-    <!-- <button class="box__button" type="submit">Upload</button> -->
-    </div>
-    
-    </form>
+        <form class="box" method="post" action="/predict" enctype="multipart/form-data">
+          <div class="box__input">
+            <h1>Upload image and test your result</h1>
+            <center><input type="file" name="file" onchange="readURL(this);" /></center><br>
+            <div><center><img id="blah" src="http://giphygifs.s3.amazonaws.com/media/G5ZzaFMyDNoPu/giphy.gif" alt="your image" height="200px" width="200px"  /></center></div>
+            <div><center><button type="submit" class="button">Predict</button></center></div>
+            <p style="margin-top:25px;">{{ predictions }}</p>
+          </div>
+        </form>
+      </div>
     </div>
   </div>
     
@@ -151,5 +134,18 @@
     <script src="{{ url_for('static', filename='js/jquery.sticky.js') }}"></script>
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
     <script src="https://js.stripe.com/v3"></script>
-
+    <script>
+      function readURL(input) {
+         if (input.files && input.files[0]) {
+             var reader = new FileReader();
+     
+             reader.onload = function (e) {
+                 $('#blah')
+                     .attr('src', e.target.result);
+             };
+     
+             reader.readAsDataURL(input.files[0]);
+         }
+     }
+     </script>
 </body>

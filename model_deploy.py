@@ -28,6 +28,7 @@ def build_model():
     model = model_from_json(json.dumps(architecture))
 
   model.load_weights('model_results/multi_disease_model_weight.h5')
+  model._make_predict_function()
 
   """model.compile(
       optimizer='adam',
@@ -75,4 +76,3 @@ if __name__ == '__main__':
 
   preds = predict_image(model, 'model_results/test_images/Cardiomegaly.jpeg')
   print(preds)
-

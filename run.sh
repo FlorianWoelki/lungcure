@@ -1,6 +1,6 @@
 #!/bin/bash
 
-git pull &&
-source ./bin/activate &&
+# git pull &&
+# source ./bin/activate &&
 
 flask run
