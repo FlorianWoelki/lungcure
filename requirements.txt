@@ -6,4 +6,3 @@ keras==2.2.5
 matplotlib
 python-dotenv
 pillow
-gevent
