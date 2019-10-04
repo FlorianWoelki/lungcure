@@ -10,31 +10,12 @@ import json
 
 
 def build_model():
-  """base_mobilenet_model = MobileNet(
-      input_shape=(128, 128, 3), 
-      include_top=False,
-      weights=None
-  )
-  model = Sequential()
-  model.add(base_mobilenet_model)
-  model.add(GlobalAveragePooling2D())
-  model.add(Dropout(0.5))
-  model.add(Dense(512))
-  model.add(Dropout(0.5))
-  model.add(Dense(14, activation='sigmoid'))"""
-
   with open('model_results/multi_disease_model.json', 'r') as json_file:
     architecture = json.load(json_file)
     model = model_from_json(json.dumps(architecture))
 
   model.load_weights('model_results/multi_disease_model_weight.h5')
   model._make_predict_function()
-
-  """model.compile(
-      optimizer='adam',
-      loss='binary_crossentropy',
-      metrics=['binary_accuracy', 'mae']
-  )"""
   return model
 
 

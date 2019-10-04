@@ -18,109 +18,106 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.css">
 
   <style>
-    .box__dragndrop,
-    .box__uploading,
-    .box__success,
-    .box__error {
-      display: none;
-    }
-    img{
-      max-width:180px;
-    }
-    input[type=file]{
-    padding:10px;
-    background:#2d2d2d;}
-    img.rounded-corner{
-        border-image: 30px;
-    }
-    body, html {
-  height: 100%;
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
- /* background-image: url("https://cdn.prod-carehubs.net/n1/802899ec472ea3d8/uploads/2017/12/121713-lung_lungsillustration-1024x768-original.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-*/
+      .box__dragndrop,
+      .box__uploading,
+      .box__success,
+      .box__error {
+          display: none;
+      }
+      
+      img {
+          max-width: 180px;
+      }
+    
+      input[type=file] {
+          padding: 10px;
+          background: #2d2d2d;
+      }
 
-    }
-.hero-image {
-  /*background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("filename=images/lung.jpg");*/
-  background-image:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url({{ url_for('static', filename='images/lung.jpg') }});
-  height: 100%;
-  background-position: center;
-  /*background-repeat: no-repeat;*/
-  background-size: cover;
-  position: relative;
-}
+      img.rounded-corner {
+          border-image: 30px;
+      }
 
-.hero-text {
-  text-align: center;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: white;
-}
+      body, html {
+          height: 100%;
+          margin: 0;
+          font-family: Arial, Helvetica, sans-serif;
+      }
 
-.hero-text button {
-  border: none;
-  outline: 0;
-  display: inline-block;
-  padding: 10px 25px;
-  color: black;
-  background-color: #ddd;
-  text-align: center;
-  cursor: pointer;
-}
+      .hero-image {
+          background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url({{ url_for('static', filename='images/lung.jpg') }});
+          height: 100%;
+          background-position: center;
+          background-size: cover;
+          position: relative;
+      }
 
-.hero-text button:hover {
-  background-color: #555;
-  color: white;
-}
-.button {
-  padding: 15px 25px;
-  font-size: 24px;
-  text-align: center;
-  cursor: pointer;
-  outline: none;
-  color: #fff;
-  background-color: #4CAF50;
-  border: none;
-  border-radius: 15px;
-  box-shadow: 0 9px #999;
-}
+      .hero-text {
+          text-align: center;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          color: white;
+      }
 
-.button:hover {background-color: #3e8e41}
+      .hero-text button {
+          border: none;
+          outline: 0;
+          display: inline-block;
+          padding: 10px 25px;
+          color: black;
+          background-color: #ddd;
+          text-align: center;
+          cursor: pointer;
+      }
 
-.button:active {
-  background-color: #3e8e41;
-  box-shadow: 0 5px #666;
-  transform: translateY(4px);
-}
+      .hero-text button:hover {
+          background-color: #555;
+          color: white;
+      }
 
+      .button {
+          padding: 15px 25px;
+          font-size: 24px;
+          text-align: center;
+          cursor: pointer;
+          outline: none;
+          color: #fff;
+          background-color: #4CAF50;
+          border: none;
+          border-radius: 15px;
+          box-shadow: 0 9px #999;
+      }
 
+      .button:hover {
+          background-color: #3e8e41
+      }
 
+      .button:active {
+          background-color: #3e8e41;
+          box-shadow: 0 5px #666;
+          transform: translateY(4px);
+      }
   </style>
 </head>
 
-<body >
+<body>
     <div class="hero-image">
-      <div class="hero-text">
-        <form class="box" method="post" action="/predict" enctype="multipart/form-data">
-          <div class="box__input">
-            <h1>Upload image and test your result</h1>
-            <center><input type="file" name="file" onchange="readURL(this);" /></center><br>
-            <div><center><img id="blah" src="http://giphygifs.s3.amazonaws.com/media/G5ZzaFMyDNoPu/giphy.gif" alt="your image" height="200px" width="200px"  /></center></div>
-            <div><center><button type="submit" class="button">Predict</button></center></div>
-            {% if predictions.length != 0 %}
-              <canvas style="margin-top: 30px;" id="predictions-chart" width="400" height="250"></canvas>
-            {% endif %}
-          </div>
-        </form>
-      </div>
+        <div class="hero-text">
+            <form class="box" method="post" action="/predict" enctype="multipart/form-data">
+                <div class="box__input">
+                    <h1>Upload image and test your result</h1>
+                    <center><input type="file" name="file" onchange="readURL(this);" /></center><br>
+                    <div><center><img id="blah" src="http://giphygifs.s3.amazonaws.com/media/G5ZzaFMyDNoPu/giphy.gif" alt="your image" height="200px" width="200px"  /></center></div>
+                    <div><center><button type="submit" class="button">Predict</button></center></div>
+                    {% if predictions.length != 0 %}
+                      <canvas style="margin-top: 30px;" id="predictions-chart" width="400" height="250"></canvas>
+                    {% endif %}
+                </div>
+            </form>
+        </div>
     </div>
-  </div>
-    
 
     <script src="{{ url_for('static', filename='js/jquery-3.3.1.min.js') }}"></script>
     <script src="{{ url_for('static', filename='js/jquery-migrate-3.0.1.min.js') }}"></script>
@@ -150,39 +147,39 @@
           const myBarChart = new Chart(ctx, {
               type: 'bar',
               data: {
-                labels: labels,
-                datasets: [
-                  {
-                    label: 'Predictions',
-                    backgroundColor: 'rgba(220,220,220,1)', 
-                    data: predictions
-                  }
-                ]
+                  labels: labels,
+                  datasets: [
+                      {
+                        label: 'Predictions',
+                        backgroundColor: 'rgba(220,220,220,1)', 
+                        data: predictions
+                      }
+                  ]
               },
               options: {
-                responsive: true,
-                scales: {
-                  xAxes: [{
-                    display: true,
-                    gridLines: {
-                      display: true,
-                      color: '#555',
-                    },
-                    ticks: {
-                      fontColor: '#fff'
-                    }
-                  }],
-                  yAxes: [{
-                    display: true,
-                    gridLines: {
-                      display: true,
-                      color: '#555',
-                    },
-                    ticks: {
-                      fontColor: '#fff'
-                    }
-                  }]
-                }
+                  responsive: true,
+                  scales: {
+                      xAxes: [{
+                          display: true,
+                          gridLines: {
+                              display: true,
+                              color: '#555',
+                          },
+                          ticks: {
+                              fontColor: '#fff'
+                          }
+                      }],
+                      yAxes: [{
+                          display: true,
+                          gridLines: {
+                              display: true,
+                              color: '#555',
+                          },
+                          ticks: {
+                              fontColor: '#fff'
+                          }
+                      }]
+                  }
               }
           });
       }
@@ -192,8 +189,7 @@
              var reader = new FileReader();
      
              reader.onload = function (e) {
-                 $('#blah')
-                     .attr('src', e.target.result);
+                 $('#blah').attr('src', e.target.result);
              };
      
              reader.readAsDataURL(input.files[0]);
