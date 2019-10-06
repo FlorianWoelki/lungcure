@@ -1,5 +1,15 @@
 # lungcure
 
+lungcure is a fully functional and free lung disease detection web app with payment integration.
+
+## Preview Images
+
+![Login Preview Image](https://i.imgur.com/sW14NKM.png)
+![Features Preview](https://i.imgur.com/VwaWEUN.png)
+![Pricing Preview](https://i.imgur.com/qkhEodJ.png)
+![Result Preview](https://i.imgur.com/AlN6Yst.png)
+
+
 ## Instructions on testing the webapp
 
 1. Go to https://hidden-peak-62367.herokuapp.com/
